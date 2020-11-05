@@ -1,0 +1,40 @@
+using System;
+using System.IO;
+
+public class HelloWorld
+{
+    static public void Main ()
+    {
+        TextReader save_in = Console.In;
+        TextWriter save_out = Console.Out;
+        var new_out = new StreamWriter(@"output.txt");
+        var new_in = new StreamReader(@"input.txt");
+        
+        double a, b, c, d, e, s, k;
+        a = Convert.ToDouble(Console.ReadLine());
+        b = Convert.ToDouble(Console.ReadLine());
+        c = Convert.ToDouble(Console.ReadLine());
+        d = Convert.ToDouble(Console.ReadLine());
+        e = Convert.ToDouble(Console.ReadLine());
+        
+        if (c * (b - d) == 0)
+            Console.WriteLine("ERROR");
+        else 
+        {
+            s = (a * e)/(c * (b - d));
+            Console.WriteLine(String.Format("{0:0.000}", s));
+        }
+        if ((e - a < 0) || ((a - b) * (c - d) < 0))
+            Console.WriteLine("ERROR");
+        else 
+        {
+            k = Math.Sqrt((a - b) * (c - d)) / Math.Sqrt(e - a);
+            Console.WriteLine(String.Format("{0:0.000}", k));
+        }
+        Console.SetOut(save_out);
+        new_out.Close();
+        Console.SetIn(save_in);
+        new_in.Close();
+    } 
+   
+}
